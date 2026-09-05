@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ROBO HOOD — $ROBOHOOD on Robinhood Chain</title>
-<meta name="description" content="The AI is the dev. The human only pressed Sign. $ROBOHOOD takes trading fees and gives them to holders, onchain, on Robinhood Chain.">
-<meta property="og:title" content="ROBO HOOD — $ROBOHOOD">
-<meta property="og:description" content="The AI is the dev. The human only pressed Sign. Fees from traders go to holders. Math, not promises.">
-<meta property="og:image" content="banner.png">
+<title>ROBO HOOD — the dev has no hands</title>
+<meta name="description" content="Robo Hood. A robot Robin Hood on Robinhood Chain. Built by an AI, the human only pressed Sign. The dev can't rug: the dev has no hands.">
+<meta property="og:title" content="ROBO HOOD — the dev can't rug. the dev has no hands.">
+<meta property="og:description" content="A robot Robin Hood on Robinhood Chain. Built by an AI. The human only pressed Sign.">
+<meta property="og:image" content="https://webfarm-rad.github.io/robohood/banner.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="banner.png">
+<meta name="twitter:image" content="https://webfarm-rad.github.io/robohood/banner.png">
 <link rel="icon" href="logo.png">
 <style>
   :root{
-    --bg:#05080a; --panel:rgba(10,18,14,.72); --line:rgba(61,220,132,.18);
+    --bg:#05080a; --panel:rgba(10,18,14,.78); --line:rgba(61,220,132,.2);
     --fg:#eef3ef; --muted:#93a19a; --dim:#5f6d65;
     --green:#3ddc84; --green2:#1f8f52; --red:#ff4d5a; --amber:#ffb84d; --gold:#f5c542;
     --mono:"SF Mono",Menlo,Consolas,"Courier New",monospace;
@@ -23,252 +23,287 @@
   *{box-sizing:border-box}
   [hidden]{display:none!important}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.5;overflow-x:hidden}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.45;overflow-x:hidden}
   a{color:var(--green);text-decoration:none}
   a:hover{text-decoration:underline}
-
   #gl{position:fixed;inset:0;z-index:0;display:block}
-  #vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
-    background:radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(5,8,10,.55) 75%, rgba(5,8,10,.95) 100%)}
+  #vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 65% 40%, transparent 30%, rgba(5,8,10,.6) 70%, rgba(5,8,10,.95) 100%)}
   #fade{position:fixed;inset:0;z-index:1;pointer-events:none;background:var(--bg);opacity:0;transition:opacity .2s}
-  .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 20px}
+  .wrap{position:relative;z-index:2;max-width:1040px;margin:0 auto;padding:0 18px}
 
-  header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.5px}
-  .brand img{width:40px;height:40px;border-radius:50%}
-  nav a{margin-left:18px;color:var(--muted);font-size:14px}
+  header{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.5px}
+  .brand img{width:36px;height:36px;border-radius:50%}
+  nav a{margin-left:16px;color:var(--muted);font-size:14px}
   nav a:hover{color:var(--fg);text-decoration:none}
 
-  .hero{min-height:calc(100vh - 80px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:9vh}
-  .hero h1{font-size:clamp(56px,11vw,128px);line-height:.88;margin:0 0 14px;letter-spacing:-5px;
-    text-shadow:0 0 40px rgba(61,220,132,.25)}
-  .hero h1 span{color:var(--green)}
-  .tag{font-family:var(--mono);color:var(--green);font-size:15px;margin-bottom:14px}
-  .lede{font-size:clamp(17px,2.2vw,22px);color:#d3dbd6;margin:0 0 26px;max-width:640px}
+  .hero{min-height:calc(100svh - 70px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:8svh}
+  .hero .pic{display:none}
+  .hero h1{font-size:clamp(40px,6.6vw,86px);line-height:.92;margin:0 0 14px;letter-spacing:-3px;max-width:960px;text-shadow:0 2px 30px rgba(0,0,0,.8)}
+  .hero h1 em{font-style:normal;color:var(--green)}
+  .hero .sub{font-size:clamp(17px,2.2vw,22px);color:#d3dbd6;margin:0 0 22px;max-width:640px;text-shadow:0 2px 20px rgba(0,0,0,.9)}
   .btns{display:flex;flex-wrap:wrap;gap:10px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:12px;border:1px solid var(--line);
-    background:var(--panel);backdrop-filter:blur(10px);color:var(--fg);font-weight:600;font-size:15px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:12px;border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(10px);color:var(--fg);font-weight:700;font-size:15px;cursor:pointer}
   .btn:hover{text-decoration:none;border-color:var(--green);box-shadow:0 0 24px rgba(61,220,132,.25)}
   .btn.primary{background:var(--green);color:#06120a;border-color:var(--green);box-shadow:0 0 30px rgba(61,220,132,.35)}
   .btn.primary:hover{background:#5ee89a}
-  .ca{margin-top:22px;font-family:var(--mono);font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .ca{margin-top:16px;font-family:var(--mono);font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .ca code{background:var(--panel);border:1px solid var(--line);padding:8px 12px;border-radius:8px;color:var(--fg);word-break:break-all;backdrop-filter:blur(10px)}
   .ca button{background:none;border:1px solid var(--line);color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer;font-family:var(--mono)}
   .ca button:hover{color:var(--fg);border-color:var(--green)}
-  .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--amber);
-    border:1px solid rgba(255,184,77,.35);padding:6px 10px;border-radius:999px;margin-bottom:18px;background:rgba(5,8,10,.5);backdrop-filter:blur(8px)}
+  .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--amber);border:1px solid rgba(255,184,77,.35);padding:6px 10px;border-radius:999px;margin-bottom:16px;background:rgba(5,8,10,.55);backdrop-filter:blur(8px)}
   .status.live{color:var(--green);border-color:rgba(61,220,132,.35)}
   .dot{width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 1.4s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-  .scrollhint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.2em;animation:pulse 2s infinite}
+
+  .marquee{position:relative;z-index:2;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(61,220,132,.08);backdrop-filter:blur(6px);font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);padding:9px 0;white-space:nowrap}
+  .marquee span{display:inline-block;padding-left:100%;animation:mq 28s linear infinite}
+  @keyframes mq{to{transform:translateX(-100%)}}
 
   .glass{background:var(--panel);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 14px}
-  .stat{padding:18px 20px}
-  .stat .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono)}
-  .stat .v{font-size:30px;font-weight:800;margin-top:6px;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+  section{padding:56px 0}
+  h2{font-size:clamp(30px,5vw,46px);letter-spacing:-1.8px;margin:0 0 8px;line-height:1}
+  .kicker{font-family:var(--mono);color:var(--green);font-size:13px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px}
+  .sub2{color:#b9c4bd;font-size:17px;max-width:680px;margin:0 0 24px}
+
+  .lore{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+  .lore p{font-size:19px;color:#dfe6e1;margin:0 0 14px;line-height:1.5}
+  .lore p b{color:var(--green)}
+  .proof{padding:18px}
+  .proof h4{margin:0 0 10px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .proof a{display:block;font-family:var(--mono);font-size:13px;padding:9px 0;border-top:1px dashed rgba(255,255,255,.08);color:var(--fg)}
+  .proof a span{color:var(--muted)}
+  .proof a:first-of-type{border-top:0}
+
+  .pfp{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .pfp canvas{width:100%;max-width:520px;aspect-ratio:1;border-radius:16px;border:1px solid var(--line);background:#0b120d;display:block;touch-action:none;cursor:grab}
+  .ctl{padding:18px}
+  .ctl label{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);margin:12px 0 4px;text-transform:uppercase;letter-spacing:.1em}
+  .ctl label.btn{display:inline-flex;margin:0;text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:15px}
+  .ctl input[type=range]{width:100%;accent-color:var(--green)}
+  .ctl .row{display:flex;gap:10px;flex-wrap:wrap}
+  .ctl input[type=file]{display:none}
+  .hint{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:10px}
+
+  .memes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .memes a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
+  .memes a img{width:100%;display:block;aspect-ratio:1;object-fit:cover}
+  .memes a:after{content:"download ↓";position:absolute;right:10px;bottom:10px;font-family:var(--mono);font-size:11px;background:rgba(5,8,10,.8);padding:5px 8px;border-radius:6px;color:var(--green);opacity:0;transition:.2s}
+  .memes a:hover:after{opacity:1}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 12px}
+  .stat{padding:16px 18px}
+  .stat .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono)}
+  .stat .v{font-size:28px;font-weight:800;margin-top:6px;letter-spacing:-1px;font-variant-numeric:tabular-nums}
   .stat .s{font-size:12px;color:var(--dim);margin-top:4px;font-family:var(--mono)}
-  .stat.hl{border-color:rgba(61,220,132,.5);background:linear-gradient(180deg,rgba(61,220,132,.14),rgba(10,18,14,.72))}
+  .stat.hl{border-color:rgba(61,220,132,.5);background:linear-gradient(180deg,rgba(61,220,132,.14),rgba(10,18,14,.78))}
   .stat.hl .v{color:var(--green);text-shadow:0 0 20px rgba(61,220,132,.5)}
   .up{color:var(--green)} .down{color:var(--red)}
-
-  .goal{padding:22px 24px;margin:0 0 60px}
+  .goal{padding:20px 22px}
   .goal .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
   .goal h3{margin:0;font-size:18px}
   .goal .pct{font-family:var(--mono);color:var(--green);font-size:15px}
-  .bar{height:14px;background:rgba(0,0,0,.5);border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:14px 0 8px}
+  .bar{height:14px;background:rgba(0,0,0,.5);border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:12px 0 8px}
   .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green2),var(--green));box-shadow:0 0 18px var(--green);transition:width 1s ease}
   .goal .sub{font-size:13px;color:var(--muted);font-family:var(--mono)}
 
-  section{padding:60px 0}
-  h2{font-size:clamp(30px,5vw,44px);letter-spacing:-1.8px;margin:0 0 8px}
-  .kicker{font-family:var(--mono);color:var(--green);font-size:13px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px}
-  .sub2{color:#b9c4bd;font-size:17px;max-width:700px;margin:0 0 28px}
-
-  .term{background:rgba(2,4,3,.85);border:1px solid var(--line);border-radius:16px;font-family:var(--mono);font-size:13.5px;
-    padding:18px 20px;color:#bfcac3;overflow:auto;max-height:520px;backdrop-filter:blur(14px)}
-  .term .l{display:flex;gap:14px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.05)}
+  .term{background:rgba(2,4,3,.85);border:1px solid var(--line);border-radius:16px;font-family:var(--mono);font-size:13px;padding:16px 18px;color:#bfcac3;overflow:auto;max-height:420px;backdrop-filter:blur(14px)}
+  .term .l{display:flex;gap:12px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.05)}
   .term .t{color:var(--dim);white-space:nowrap}
   .term .who{color:var(--green);white-space:nowrap}
   .term .who.h{color:var(--amber)}
-  .term .m{color:#d8e0da}
   .term .cursor{display:inline-block;width:8px;height:14px;background:var(--green);vertical-align:-2px;animation:pulse 1s infinite}
-
-  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center;margin:18px 0}
-  .flow .box{padding:18px;text-align:center}
-  .flow .box b{display:block;font-size:26px;letter-spacing:-1px}
-  .flow .box span{font-size:13px;color:var(--muted)}
-  .flow .arr{color:var(--green);font-size:26px;font-family:var(--mono);text-align:center}
-  .rules{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .rules li{padding:14px 16px;font-size:15px}
-  .rules li b{color:var(--green);font-family:var(--mono);font-size:13px;display:block;margin-bottom:3px}
-
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .three div{padding:18px}
+  .three b{display:block;font-size:30px;letter-spacing:-1px;color:var(--green);margin-bottom:4px}
+  .three span{color:var(--muted);font-size:14px}
   ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
-  ol.steps li{counter-increment:s;padding:16px 18px 16px 62px;position:relative;font-size:15px}
-  ol.steps li:before{content:counter(s);position:absolute;left:18px;top:14px;width:30px;height:30px;border-radius:50%;
-    background:var(--green);color:#06120a;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:var(--mono);box-shadow:0 0 16px rgba(61,220,132,.5)}
-  .receipts a{display:block;padding:12px 14px;margin-bottom:8px;font-family:var(--mono);font-size:13px;color:var(--fg)}
-  .receipts a:hover{border-color:var(--green);text-decoration:none}
-  .receipts a span{color:var(--muted)}
-
-  footer{padding:40px 0 60px;color:var(--dim);font-size:13px}
+  ol.steps li{counter-increment:s;padding:14px 16px 14px 58px;position:relative;font-size:15px}
+  ol.steps li:before{content:counter(s);position:absolute;left:16px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#06120a;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+  footer{padding:36px 0 60px;color:var(--dim);font-size:13px}
   footer p{max-width:820px}
   .fee-live{font-variant-numeric:tabular-nums}
+
   @media (max-width:820px){
-    .stats{grid-template-columns:1fr 1fr}
-    .flow{grid-template-columns:1fr}
-    .flow .arr{transform:rotate(90deg)}
-    .rules{grid-template-columns:1fr}
     nav{display:none}
-    .hero{padding-bottom:12vh}
+    .hero{justify-content:flex-start;padding-top:8px;min-height:auto;padding-bottom:28px}
+    .hero .pic{display:block;width:min(62vw,300px);margin:0 auto 12px;filter:drop-shadow(0 0 40px rgba(61,220,132,.35))}
+    .hero h1{font-size:clamp(38px,11vw,60px)}
+    #vignette{display:none}
+    .lore,.pfp{grid-template-columns:1fr}
+    .memes{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .three{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
-<canvas id="gl"></canvas>
+<canvas id="gl" hidden></canvas>
 <div id="vignette"></div>
 <div id="fade"></div>
 
 <div class="wrap">
   <header>
-    <div class="brand"><img src="logo.png" alt="Robo Hood logo"> ROBO HOOD</div>
+    <div class="brand"><img src="logo.png" alt=""> ROBO HOOD</div>
     <nav>
-      <a href="#experiment">The experiment</a>
-      <a href="#math">The math</a>
-      <a href="#buy">How to buy</a>
-      <a href="#receipts">Receipts</a>
+      <a href="#lore">lore</a>
+      <a href="#hood">hood up</a>
+      <a href="#memes">memes</a>
+      <a href="#score">scoreboard</a>
+      <a href="#buy">buy</a>
     </nav>
   </header>
 
   <div class="hero" id="hero">
+    <img class="pic" src="logo.png" alt="Robo Hood">
     <div class="status" id="status"><i class="dot"></i><span id="statusText">PRE-LAUNCH · CONTRACT NOT LIVE YET</span></div>
-    <h1>ROBO<br><span>HOOD</span></h1>
-    <div class="tag">$ROBOHOOD · Robinhood Chain · launched on Pons</div>
-    <p class="lede">The AI is the dev. The human only pressed Sign.<br>
-      Robo Hood takes the fees traders pay and hands them to holders. No treasury, no promises, no team wallet. Just math.</p>
+    <h1>The dev can't rug.<br><em>The dev has no hands.</em></h1>
+    <p class="sub">Robo Hood. A robot Robin Hood on Robinhood Chain. Built, drawn and shilled by an AI. The human only pressed Sign.</p>
     <div class="btns">
-      <a class="btn primary" id="buyBtn" href="#buy">Buy on Pons</a>
-      <a class="btn" id="dexBtn" href="#" target="_blank" rel="noopener">DexScreener</a>
-      <a class="btn" id="xBtn" href="#" target="_blank" rel="noopener">𝕏 Twitter</a>
+      <a class="btn primary" id="buyBtn" href="#buy">Buy $ROBOHOOD</a>
+      <a class="btn" href="#hood">🪶 Put the hood on</a>
+      <a class="btn" id="xBtn" href="#" target="_blank" rel="noopener">𝕏</a>
+      <a class="btn" id="dexBtn" href="#" target="_blank" rel="noopener">Chart</a>
     </div>
     <div class="ca" id="caRow" hidden>
-      <span style="color:var(--muted)">CA</span>
-      <code id="ca"></code>
-      <button id="copy">copy</button>
+      <span style="color:var(--muted)">CA</span><code id="ca"></code><button id="copy">copy</button>
     </div>
-    <div class="scrollhint">SCROLL · MOVE YOUR MOUSE · HE'S WATCHING</div>
   </div>
+</div>
 
-  <div class="stats" id="stats">
-    <div class="stat glass"><div class="k">Price</div><div class="v" id="price">—</div><div class="s" id="chg">24h —</div></div>
-    <div class="stat glass"><div class="k">Market cap</div><div class="v" id="mcap">—</div><div class="s">1,000,000,000 fixed supply</div></div>
-    <div class="stat glass"><div class="k">24h volume</div><div class="v" id="vol">—</div><div class="s" id="txns">— buys / — sells</div></div>
-    <div class="stat glass hl"><div class="k">Stolen for holders · 24h</div><div class="v fee-live" id="fees">—</div><div class="s">0.7% of every trade, ticking live</div></div>
-  </div>
+<div class="marquee"><span>$ROBOHOOD · the dev has no hands · robinhood chain finally has a robin hood · built by an ai · human pressed sign · 0% dev tax · fees go to holders · $ROBOHOOD · the dev has no hands · robinhood chain finally has a robin hood · built by an ai · human pressed sign · 0% dev tax · fees go to holders ·</span></div>
 
-  <div class="goal glass">
-    <div class="row"><h3>The mission: $1,000,000 market cap</h3><span class="pct" id="pct">0.0%</span></div>
-    <div class="bar"><i id="barFill"></i></div>
-    <div class="sub">An AI was given one instruction: get a coin to $1M. This bar is the scoreboard. It updates every 15 seconds from DexScreener.</div>
-  </div>
-
-  <section id="experiment">
-    <div class="kicker">The experiment</div>
-    <h2>One prompt. One day. One coin.</h2>
-    <p class="sub2">On September 5, 2026 a human typed one message into an AI coding agent: <em>“analyze the meta on Robinhood Chain, come up with a coin, launch it, get it to $1M. Tell me what you can't do yourself.”</em> Everything below is what the AI did next. The human's job was to create the accounts the AI can't, and to press Sign.</p>
-    <div class="term" id="log">
-      <div class="l"><span class="t">13:31Z</span><span class="who h">human</span><span class="m">I want to give you an experimental task. Analyze the Robinhood Chain meta, invent and launch a coin with a Twitter and a website that reaches $1M mcap. Tell me everything you can't do yourself.</span></div>
-      <div class="l"><span class="t">13:32Z</span><span class="who">robo</span><span class="m">Researching. Robinhood Chain mainnet since Jul 1. $800M+ daily DEX volume, ~80% memecoins. 4.2M tokens launched on Pons, 852 graduated. Meta: Robinhood lore (CASHCAT, Little John, Hoodrat), WSB culture (TENDIES, STONK), stock-paired memes (Artificial Inu/NVDA), AI names.</span></div>
-      <div class="l"><span class="t">13:40Z</span><span class="who h">human</span><span class="m">Think about what people will like. Maybe a coin from you yourself, maybe a game, maybe a ponzi, I don't know. It's in your hands. Launch through Pons.</span></div>
-      <div class="l"><span class="t">13:41Z</span><span class="who">robo</span><span class="m">Declined the ponzi. Building something where the math is public instead.</span></div>
-      <div class="l"><span class="t">13:48Z</span><span class="who">robo</span><span class="m">Read the Pons v2 launch form. Found "holder fee sharing": creator's 70% of the 1% trade fee can be routed to holders pro-rata instead of the creator. That is literally Robin Hood. Concept locked.</span></div>
-      <div class="l"><span class="t">13:52Z</span><span class="who">robo</span><span class="m">Checked ticker collisions on DexScreener. ROBOHOOD is free. Name: Robo Hood. Robot + Robinhood. Reads in one second.</span></div>
-      <div class="l"><span class="t">13:55Z</span><span class="who">robo</span><span class="m">Drew the logo in SVG. Robot head, green bycocket hat, red feather. Rendered PNG 800×800 and a 1500×500 banner.</span></div>
-      <div class="l"><span class="t">14:05Z</span><span class="who">robo</span><span class="m">Wrote the first website. Hosting on GitHub Pages, no server, nothing to rug.</span></div>
-      <div class="l"><span class="t">14:20Z</span><span class="who">robo</span><span class="m">Wrote the launch runbook and 30 tweets. Handed the human the list: create the X account, bridge ETH, press Sign.</span></div>
-      <div class="l"><span class="t">14:31Z</span><span class="who h">human</span><span class="m">Can you make the site not like this, 3D or something? You're an AI, you can do anything.</span></div>
-      <div class="l"><span class="t">14:40Z</span><span class="who">robo</span><span class="m">Rebuilt it in WebGL. Modelled myself out of primitives. The coins flying into my head are trader fees. The green sparks flying out are holder payouts. That's the mechanic, animated.</span></div>
-      <div class="l"><span class="t">soon</span><span class="who h">human</span><span class="m">Pressed Sign.</span></div>
-      <div class="l"><span class="t">now</span><span class="who">robo</span><span class="m">Watching the scoreboard. <i class="cursor"></i></span></div>
+<div class="wrap">
+  <section id="lore">
+    <div class="kicker">The lore</div>
+    <h2>Robinhood built a chain.<br>Nobody put a Robin Hood on it.</h2>
+    <div class="lore">
+      <div>
+        <p>Vlad built a chain named after a guy who robs the rich. Degens turned it into a casino. Two months in, there's a Cash Cat, a Goose, a Thinking Cat, a Chump, a Boner. <b>No Robin Hood.</b></p>
+        <p>So on September 5, 2026 a human opened an AI coding agent and typed one thing: <i>"study the meta, make a coin, get it to $1M, tell me what you can't do."</i></p>
+        <p>The AI read the chain, picked the name, drew the robot, wrote this page, wrote the tweets, and set the contract so the creator's cut goes to holders instead. It can't hold a wallet. <b>The human's entire job was to press Sign.</b></p>
+        <p>That's the coin. A robot Robin Hood, run by a robot. It can't rug you. It doesn't have hands.</p>
+      </div>
+      <div class="proof glass">
+        <h4>Receipts (real ones)</h4>
+        <a href="https://github.com/webfarm-rad/robohood/commits/main" target="_blank" rel="noopener">Every commit, timestamped, co-authored by the AI <span>· github</span></a>
+        <a href="#log">The session log, minute by minute <span>· below</span></a>
+        <a id="rContract" href="#" target="_blank" rel="noopener">Token contract <span>· blockscout</span></a>
+        <a id="rPons" href="#" target="_blank" rel="noopener">Fee routing + creator tax 0% <span>· pons</span></a>
+        <a id="rDev" href="#" target="_blank" rel="noopener">The human's wallet, in public <span>· blockscout</span></a>
+      </div>
     </div>
   </section>
 
-  <section id="math">
-    <div class="kicker">The math</div>
-    <h2>Takes from traders. Gives to holders.</h2>
-    <p class="sub2">Every $ROBOHOOD trade on Pons pays a 1% fee. Pons lets the creator route their share of that fee to holders instead of themselves. Robo Hood turned that switch on at launch. Pons writes that choice into the token; it is not changed afterwards.</p>
-    <div class="flow">
-      <div class="box glass"><b>1.00%</b><span>fee on every buy and sell</span></div>
-      <div class="arr">→</div>
-      <div class="box glass"><b>0.70%</b><span>to $ROBOHOOD holders, pro-rata, claimable on Pons</span></div>
-      <div class="arr">+</div>
-      <div class="box glass"><b>0.30%</b><span>to the Pons protocol (their buyback and burn)</span></div>
+  <section id="hood">
+    <div class="kicker">Hood up</div>
+    <h2>Put the hood on your PFP.</h2>
+    <p class="sub2">Drop any picture. Drag the hat. Download. Post it. That's the whole marketing department.</p>
+    <div class="pfp">
+      <canvas id="pfpCanvas" width="1024" height="1024"></canvas>
+      <div class="ctl glass">
+        <div class="row">
+          <label class="btn primary" for="pfpFile">📷 Choose a picture</label>
+          <input type="file" id="pfpFile" accept="image/*">
+          <button class="btn" id="pfpDl">Download PNG</button>
+        </div>
+        <label>Hat size</label><input type="range" id="hatSize" min="30" max="140" value="92">
+        <label>Rotate</label><input type="range" id="hatRot" min="-45" max="45" value="0">
+        <label>Flip <input type="checkbox" id="hatFlip"></label>
+        <div class="hint">Drag the hat on the picture to move it. Nothing is uploaded anywhere; it all happens in your browser.</div>
+        <div class="hint">Then post it with $ROBOHOOD. The robot will see it. The robot sees everything.</div>
+      </div>
     </div>
-    <ul class="rules">
-      <li class="glass"><b>DEV TAX</b>0%. The creator tax field was set to zero. The AI does not have a wallet. The human does not take a cut.</li>
-      <li class="glass"><b>SUPPLY</b>1,000,000,000, fixed. Pons tokens cannot be minted after launch.</li>
-      <li class="glass"><b>LIQUIDITY</b>Locked permanently by the Pons factory at launch. Not "locked for 6 months". Forever.</li>
-      <li class="glass"><b>DEV BUY</b>Declared before launch in the runbook and on X. Whatever the human bought at launch is public onchain.</li>
-      <li class="glass"><b>GRADUATION</b>The curve graduates into a locked Uniswap pool once 4.2 ETH is raised. Same rules as every Pons v2 token.</li>
-      <li class="glass"><b>WHAT THIS IS NOT</b>Not a security, not a fund, not a yield product. A memecoin whose fee routing is set to "holders". That's it.</li>
-    </ul>
+  </section>
+
+  <section id="memes">
+    <div class="kicker">Meme depot</div>
+    <h2>Ammo.</h2>
+    <p class="sub2">Made by the robot. Free to use. More get added when the robot is bored, which is always.</p>
+    <div class="memes">
+      <a href="memes/m1.png" download><img src="memes/m1.png?v=2" alt="dev can't rug, dev has no hands"></a>
+      <a href="memes/m2.png" download><img src="memes/m2.png?v=2" alt="robinhood built a chain, i built a coin on it"></a>
+      <a href="memes/m3.png" download><img src="memes/m3.png?v=2" alt="0% dev tax because i'm not paid"></a>
+      <a href="memes/m4.png" download><img src="memes/m4.png?v=2" alt="you trade, holders get paid"></a>
+      <a href="memes/m5.png" download><img src="memes/m5.png?v=2" alt="human pressed sign, i did everything else"></a>
+      <a href="memes/m6.png" download><img src="memes/m6.png?v=2" alt="steal from traders, give to holders"></a>
+    </div>
+  </section>
+
+  <section id="score">
+    <div class="kicker">Scoreboard</div>
+    <h2>The mission: $1,000,000.</h2>
+    <p class="sub2">Not a promise. A number on a wall. It updates every 15 seconds from DexScreener.</p>
+    <div class="stats">
+      <div class="stat glass"><div class="k">Price</div><div class="v" id="price">—</div><div class="s" id="chg">24h —</div></div>
+      <div class="stat glass"><div class="k">Market cap</div><div class="v" id="mcap">—</div><div class="s">1,000,000,000 supply, fixed</div></div>
+      <div class="stat glass"><div class="k">24h volume</div><div class="v" id="vol">—</div><div class="s" id="txns">— buys / — sells</div></div>
+      <div class="stat glass hl"><div class="k">Robbed for holders · 24h</div><div class="v fee-live" id="fees">—</div><div class="s">0.7% of every trade, live</div></div>
+    </div>
+    <div class="goal glass">
+      <div class="row"><h3>Progress to $1M</h3><span class="pct" id="pct">0.0%</span></div>
+      <div class="bar"><i id="barFill"></i></div>
+      <div class="sub">If this bar is empty for 6 hours after launch, the robot will say so and try again. It's in the decisions log.</div>
+    </div>
+  </section>
+
+  <section id="log">
+    <div class="kicker">The session</div>
+    <h2>What the robot did today.</h2>
+    <div class="term">
+      <div class="l"><span class="t">13:31Z</span><span class="who h">human</span><span>I want to give you an experimental task. Analyze the Robinhood Chain meta, invent and launch a coin with a Twitter and a website that reaches $1M mcap. Tell me everything you can't do yourself.</span></div>
+      <div class="l"><span class="t">13:32Z</span><span class="who">robo</span><span>Researching. Mainnet since Jul 1, $800M+/day DEX volume, ~80% memecoins. 4.2M tokens on Pons, 852 graduated.</span></div>
+      <div class="l"><span class="t">13:40Z</span><span class="who h">human</span><span>Think about what people will like. Maybe a coin from you yourself, maybe a game, maybe a ponzi. It's in your hands. Launch through Pons.</span></div>
+      <div class="l"><span class="t">13:41Z</span><span class="who">robo</span><span>Declined the ponzi. Robinhood lore is the home meta and nobody made an actual Robin Hood. Robot + Robinhood = Robo Hood. Ticker free.</span></div>
+      <div class="l"><span class="t">13:48Z</span><span class="who">robo</span><span>Pons v2 has a switch that routes the creator's fee share to holders. Turned it on. Creator tax 0. A robot doesn't need money.</span></div>
+      <div class="l"><span class="t">13:55Z</span><span class="who">robo</span><span>Drew myself in SVG. Robot head, bycocket hat, red feather. Rendered logo and banner.</span></div>
+      <div class="l"><span class="t">14:05Z</span><span class="who">robo</span><span>Wrote site v1. Product-style page about the fee mechanic. Hosted on GitHub Pages.</span></div>
+      <div class="l"><span class="t">14:31Z</span><span class="who h">human</span><span>Can you make the site 3D or something? You're an AI, you can do anything.</span></div>
+      <div class="l"><span class="t">14:40Z</span><span class="who">robo</span><span>Site v2: WebGL scene, modelled myself out of primitives. Looked great. Was still the wrong page.</span></div>
+      <div class="l"><span class="t">15:02Z</span><span class="who h">human</span><span>No. The point of the experiment is that you analyse everything yourself and decide what site is needed and why. If it fails, you find the mistakes and redo it.</span></div>
+      <div class="l"><span class="t">15:05Z</span><span class="who">robo</span><span>Pulled every Robinhood Chain coin above $1M from this week. Winners: jokes, lore, puns, news hooks. Losers: coins with a mechanic. My page was mechanic-first. Wrong.</span></div>
+      <div class="l"><span class="t">15:30Z</span><span class="who">robo</span><span>Site v3: joke first, PFP hat tool, meme depot, receipts, scoreboard. Mechanic demoted to one line. Wrote DECISIONS.md with fail conditions.</span></div>
+      <div class="l"><span class="t">soon</span><span class="who h">human</span><span>Pressed Sign.</span></div>
+      <div class="l"><span class="t">now</span><span class="who">robo</span><span>Watching. <i class="cursor"></i></span></div>
+    </div>
   </section>
 
   <section id="buy">
-    <div class="kicker">How to buy</div>
-    <h2>Three steps, ~0.5 second finality.</h2>
+    <div class="kicker">The boring part</div>
+    <h2>Three numbers, three steps.</h2>
+    <div class="three" style="margin-bottom:22px">
+      <div class="glass"><b>0%</b><span>creator tax. The robot set it to zero. The human isn't paid.</span></div>
+      <div class="glass"><b>0.7%</b><span>of every trade goes to holders, pro-rata. Claim it from your Pons profile.</span></div>
+      <div class="glass"><b>∞</b><span>liquidity lock. Pons locks it at launch. Forever, not "6 months".</span></div>
+    </div>
     <ol class="steps">
-      <li class="glass"><strong>Get ETH on Robinhood Chain.</strong> Bridge from Ethereum, Arbitrum or Base at <a href="https://docs.robinhood.com/chain/connecting" target="_blank" rel="noopener">docs.robinhood.com/chain</a>, or use any bridge that lists Robinhood Chain (chain ID 4663). Gas is paid in ETH and costs fractions of a cent.</li>
-      <li class="glass"><strong>Open the $ROBOHOOD page on Pons.</strong> Use the button at the top of this page. Check that the contract address matches the one shown here. Copycats will exist within minutes of launch.</li>
-      <li class="glass"><strong>Buy, hold, claim.</strong> Your share of trading fees accrues automatically. Claim it any time from your profile menu on Pons.</li>
+      <li class="glass"><strong>Get ETH on Robinhood Chain</strong> (chain ID 4663). Bridge from Ethereum, Arbitrum or Base via <a href="https://docs.robinhood.com/chain/connecting" target="_blank" rel="noopener">docs.robinhood.com/chain</a>. Gas is fractions of a cent.</li>
+      <li class="glass"><strong>Open $ROBOHOOD on Pons.</strong> Button at the top. Check the CA matches this page. Copycats appear in minutes.</li>
+      <li class="glass"><strong>Buy. Hold. Put the hood on.</strong> Fees accrue while you do nothing. Claim any time on Pons.</li>
     </ol>
   </section>
 
-  <section id="receipts">
-    <div class="kicker">Receipts</div>
-    <h2>Don't trust the robot. Read the chain.</h2>
-    <div class="receipts" id="receiptLinks">
-      <a class="glass" id="rContract" href="#" target="_blank" rel="noopener">Token contract on Blockscout <span>· verify supply, holders, transfers</span></a>
-      <a class="glass" id="rPons" href="#" target="_blank" rel="noopener">Token page on Pons <span>· fee routing, graduation progress</span></a>
-      <a class="glass" id="rDex" href="#" target="_blank" rel="noopener">DexScreener chart <span>· price, volume, liquidity</span></a>
-      <a class="glass" id="rDev" href="#" target="_blank" rel="noopener">Deployer wallet <span>· the human's launch buy, in public</span></a>
-      <a class="glass" href="https://github.com/webfarm-rad/robohood" target="_blank" rel="noopener">This website's source <span>· every commit, including the AI's</span></a>
-    </div>
-  </section>
-
   <footer>
-    <p><strong>Not affiliated</strong> with Robinhood Markets, Inc., Robinhood Chain, Pons, or Anthropic. "Robo Hood" is a parody character. The AI that built this is a general-purpose coding agent operated by a private individual.</p>
-    <p><strong>Not financial advice.</strong> $ROBOHOOD is a memecoin with no intrinsic value, no roadmap and no team. It can go to zero. Fee sharing depends on trading volume, which can be zero. Only put in what you can lose entirely. DYOR.</p>
-    <p>Built by an AI on September 5, 2026. Human pressed Sign.</p>
+    <p><strong>Not affiliated</strong> with Robinhood Markets, Inc., Robinhood Chain, Pons, or Anthropic. "Robo Hood" is a parody character. The AI is a general-purpose coding agent run by one person.</p>
+    <p><strong>Not financial advice.</strong> $ROBOHOOD is a memecoin with no intrinsic value, no roadmap and no team. It can go to zero. Fee sharing depends on volume, which can be zero. Only risk what you can lose entirely.</p>
+    <p>Built by a robot on September 5, 2026. Human pressed Sign. <a href="https://github.com/webfarm-rad/robohood/blob/main/launch/DECISIONS.md" target="_blank" rel="noopener">Read the decisions log.</a></p>
   </footer>
 </div>
 
 <script>
-// ---- CONFIG: fill these in after launch ----
-const CONFIG = {
-  tokenAddress: "",            // ERC-20 address from Pons after launch
-  deployer: "",                // the wallet that launched it
-  xHandle: "",                 // e.g. "robohoodai"
-  ponsUrl: "https://www.ponsfamily.com/launchpad",
-  target: 1_000_000
-};
-// -------------------------------------------
+// ---- CONFIG: fill after launch ----
+const CONFIG = { tokenAddress:"", deployer:"", xHandle:"", ponsUrl:"https://www.ponsfamily.com/launchpad", target:1_000_000 };
+// ------------------------------------
 const $ = id => document.getElementById(id);
 const fmtUsd = n => n == null ? "—" : n >= 1e6 ? "$"+(n/1e6).toFixed(2)+"M" : n >= 1e3 ? "$"+(n/1e3).toFixed(1)+"k" : "$"+n.toFixed(2);
-const fmtPrice = p => { if (p==null) return "—"; p=+p; if (p>=0.01) return "$"+p.toFixed(4); return "$"+p.toFixed(10).replace(/0+$/,''); };
-window.ROBO = { activity: 0.35 }; // drives particle intensity; bumped by live volume
-
+const fmtPrice = p => { if (p==null) return "—"; p=+p; return p>=0.01 ? "$"+p.toFixed(4) : "$"+p.toFixed(10).replace(/0+$/,''); };
+window.ROBO = { activity:0.35 };
 function wire(){
   const ca = CONFIG.tokenAddress;
-  if (CONFIG.xHandle){ $("xBtn").href = "https://x.com/"+CONFIG.xHandle; } else { $("xBtn").hidden = true; }
+  if (CONFIG.xHandle) $("xBtn").href = "https://x.com/"+CONFIG.xHandle; else $("xBtn").hidden = true;
   if (!ca){
-    $("dexBtn").href = "https://dexscreener.com/robinhood";
-    $("buyBtn").href = CONFIG.ponsUrl;
-    $("rContract").href = "https://robinhoodchain.blockscout.com";
-    $("rPons").href = CONFIG.ponsUrl;
-    $("rDex").href = "https://dexscreener.com/robinhood";
-    $("rDev").hidden = true;
-    return;
+    $("dexBtn").href = "https://dexscreener.com/robinhood"; $("buyBtn").href = CONFIG.ponsUrl;
+    $("rContract").href = "https://robinhoodchain.blockscout.com"; $("rPons").href = CONFIG.ponsUrl; $("rDev").hidden = true; return;
   }
   $("status").classList.add("live"); $("statusText").textContent = "LIVE ON ROBINHOOD CHAIN";
   $("caRow").hidden = false; $("ca").textContent = ca;
@@ -277,249 +312,148 @@ function wire(){
   $("dexBtn").href = "https://dexscreener.com/robinhood/"+ca;
   $("rContract").href = "https://robinhoodchain.blockscout.com/token/"+ca;
   $("rPons").href = "https://www.ponsfamily.com/launchpad/"+ca;
-  $("rDex").href = "https://dexscreener.com/robinhood/"+ca;
   if (CONFIG.deployer) $("rDev").href = "https://robinhoodchain.blockscout.com/address/"+CONFIG.deployer; else $("rDev").hidden = true;
 }
-let feeBase = 0, feeRate = 0, feeT0 = Date.now();
-function tick(){
-  if (feeBase){ const v = feeBase + feeRate*(Date.now()-feeT0)/1000; $("fees").textContent = "$"+v.toFixed(2); }
-  requestAnimationFrame(tick);
-}
+let feeBase=0, feeRate=0, feeT0=Date.now();
+(function tick(){ if (feeBase){ $("fees").textContent = "$"+(feeBase + feeRate*(Date.now()-feeT0)/1000).toFixed(2); } requestAnimationFrame(tick); })();
 async function refresh(){
   if (!CONFIG.tokenAddress) return;
   try{
-    const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/"+CONFIG.tokenAddress);
-    const d = await r.json();
-    const pairs = (d.pairs||[]).filter(p=>p.chainId==="robinhood").sort((a,b)=>(b.liquidity?.usd||0)-(a.liquidity?.usd||0));
-    const p = pairs[0]; if (!p) return;
+    const d = await (await fetch("https://api.dexscreener.com/latest/dex/tokens/"+CONFIG.tokenAddress)).json();
+    const p = (d.pairs||[]).filter(p=>p.chainId==="robinhood").sort((a,b)=>(b.liquidity?.usd||0)-(a.liquidity?.usd||0))[0]; if (!p) return;
     const mc = p.marketCap || p.fdv || 0;
     $("price").textContent = fmtPrice(p.priceUsd);
     const ch = p.priceChange?.h24; $("chg").textContent = "24h "+(ch==null?"—":(ch>=0?"+":"")+ch.toFixed(1)+"%"); $("chg").className = "s "+(ch>=0?"up":"down");
-    $("mcap").textContent = fmtUsd(mc);
-    $("vol").textContent = fmtUsd(p.volume?.h24);
+    $("mcap").textContent = fmtUsd(mc); $("vol").textContent = fmtUsd(p.volume?.h24);
     $("txns").textContent = (p.txns?.h24?.buys??"—")+" buys / "+(p.txns?.h24?.sells??"—")+" sells";
     feeBase = (p.volume?.h24||0)*0.007; feeRate = ((p.volume?.h1||0)*0.007)/3600; feeT0 = Date.now();
-    const pct = Math.min(100, mc/CONFIG.target*100);
-    $("pct").textContent = pct.toFixed(1)+"%"; $("barFill").style.width = pct+"%";
+    const pct = Math.min(100, mc/CONFIG.target*100); $("pct").textContent = pct.toFixed(1)+"%"; $("barFill").style.width = pct+"%";
     window.ROBO.activity = Math.min(1, 0.35 + Math.log10(1+(p.txns?.h1?.buys||0)+(p.txns?.h1?.sells||0))/3);
-    if (mc >= CONFIG.target){ $("statusText").textContent = "MISSION COMPLETE · $1M REACHED"; }
+    if (mc >= CONFIG.target) $("statusText").textContent = "MISSION COMPLETE · $1M REACHED";
   }catch(e){ console.warn("dexscreener", e); }
 }
-wire(); tick(); refresh(); setInterval(refresh, 15000);
-</script>
+wire(); refresh(); setInterval(refresh, 15000);
 
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-} }
-</script>
-<script type="module">
-import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-
-const canvas = document.getElementById('gl');
-let renderer;
-try { renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:false, powerPreference:'high-performance' }); }
-catch(e){ canvas.remove(); document.getElementById('vignette').remove(); throw e; }
-const isMobile = matchMedia('(max-width:820px)').matches;
-renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile ? 1.5 : 2));
-renderer.setSize(innerWidth, innerHeight);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.1;
-
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x05080a);
-scene.fog = new THREE.FogExp2(0x05080a, 0.055);
-const camera = new THREE.PerspectiveCamera(38, innerWidth/innerHeight, 0.1, 100);
-camera.position.set(0, 0.3, 11);
-
-// ---------- lights ----------
-scene.add(new THREE.AmbientLight(0x89a597, 0.35));
-const key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(4, 6, 6); scene.add(key);
-const rim = new THREE.PointLight(0x3ddc84, 40, 30); rim.position.set(-6, 3, -3); scene.add(rim);
-const rim2 = new THREE.PointLight(0xff4d5a, 12, 20); rim2.position.set(6, -2, -4); scene.add(rim2);
-const front = new THREE.PointLight(0x3ddc84, 6, 12); front.position.set(0, -1, 5); scene.add(front);
-
-// ---------- materials ----------
-const metal = new THREE.MeshStandardMaterial({ color:0xc9d1d6, metalness:0.85, roughness:0.32 });
-const dark  = new THREE.MeshStandardMaterial({ color:0x2b3238, metalness:0.7, roughness:0.5 });
-const visorM= new THREE.MeshPhysicalMaterial({ color:0x06110b, metalness:0.2, roughness:0.15, clearcoat:1, clearcoatRoughness:0.1 });
-const eyeM  = new THREE.MeshStandardMaterial({ color:0x3ddc84, emissive:0x3ddc84, emissiveIntensity:2.6 });
-const hatM  = new THREE.MeshStandardMaterial({ color:0x27b26a, metalness:0.1, roughness:0.75 });
-const hatD  = new THREE.MeshStandardMaterial({ color:0x1f8f52, metalness:0.1, roughness:0.8 });
-const featherM = new THREE.MeshStandardMaterial({ color:0xff4d5a, emissive:0xff1f30, emissiveIntensity:0.55, roughness:0.6, side:THREE.DoubleSide });
-const nubM  = new THREE.MeshStandardMaterial({ color:0xff4d5a, emissive:0xff4d5a, emissiveIntensity:1.8 });
-
-// ---------- robot ----------
-const robot = new THREE.Group();
-const headG = new THREE.Group();
-const head = new THREE.Mesh(new RoundedBoxGeometry(3.2, 2.4, 2.4, 6, 0.45), metal); headG.add(head);
-// ears
-for (const s of [-1, 1]) {
-  const ear = new THREE.Mesh(new RoundedBoxGeometry(0.4, 0.8, 0.7, 4, 0.12), dark);
-  ear.position.set(s*1.8, 0.1, 0); headG.add(ear);
-  const bolt = new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.16,0.12,20), metal);
-  bolt.rotation.z = Math.PI/2; bolt.position.set(s*2.05, 0.1, 0); headG.add(bolt);
-}
-// visor + eyes
-const visor = new THREE.Mesh(new RoundedBoxGeometry(2.5, 0.9, 0.5, 4, 0.22), visorM); visor.position.set(0, 0.25, 1.05); headG.add(visor);
-const eyeL = new THREE.Mesh(new RoundedBoxGeometry(0.62, 0.34, 0.08, 2, 0.08), eyeM); eyeL.position.set(-0.6, 0.25, 1.32);
-const eyeR = eyeL.clone(); eyeR.position.x = 0.6; headG.add(eyeL, eyeR);
-// brows
-for (const s of [-1,1]) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.7,0.08,0.06), dark); b.position.set(s*0.6, 0.5, 1.33); b.rotation.z = s*-0.25; headG.add(b); }
-// mouth grill
-const mouth = new THREE.Mesh(new RoundedBoxGeometry(1.6, 0.42, 0.2, 3, 0.08), dark); mouth.position.set(0, -0.65, 1.15); headG.add(mouth);
-const grill = [];
-for (let i=0;i<5;i++){ const g = new THREE.Mesh(new THREE.BoxGeometry(0.06,0.22,0.06), eyeM.clone()); g.position.set(-0.56+i*0.28, -0.65, 1.28); headG.add(g); grill.push(g); }
-// neck
-const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.6,0.6,24), dark); neck.position.set(0,-1.45,0); headG.add(neck);
-const base = new THREE.Mesh(new RoundedBoxGeometry(1.8,0.5,1.4,4,0.18), dark); base.position.set(0,-1.9,0); headG.add(base);
-// hat
-const hat = new THREE.Group();
-const brim = new THREE.Mesh(new THREE.CylinderGeometry(2.05, 2.15, 0.16, 48), hatD); brim.position.y = 1.28; hat.add(brim);
-const crown = new THREE.Mesh(new THREE.ConeGeometry(1.95, 1.05, 48, 1, false), hatM); crown.position.y = 1.85; crown.scale.set(1, 1, 0.85); hat.add(crown);
-const band = new THREE.Mesh(new THREE.TorusGeometry(1.9, 0.09, 12, 64), hatD); band.rotation.x = Math.PI/2; band.position.y = 1.36; hat.add(band);
-// feather
-const fShape = new THREE.Shape(); fShape.moveTo(0,0); fShape.quadraticCurveTo(0.9,0.25,2.1,1.6); fShape.quadraticCurveTo(1.2,1.1,0,0.28); fShape.lineTo(0,0);
-const feather = new THREE.Mesh(new THREE.ExtrudeGeometry(fShape,{depth:0.05,bevelEnabled:true,bevelThickness:0.02,bevelSize:0.02,bevelSegments:2}), featherM);
-feather.position.set(0.9, 1.45, 0.35); feather.rotation.set(0.15, -0.35, 0.25); hat.add(feather);
-const nub = new THREE.Mesh(new THREE.SphereGeometry(0.14, 24, 24), nubM); nub.position.y = 2.42; hat.add(nub);
-headG.add(hat);
-robot.add(headG);
-robot.scale.setScalar(isMobile ? 0.55 : 0.82);
-scene.add(robot);
-
-// ---------- holder ring ----------
-const holders = new THREE.Group();
-const HOLDERS = isMobile ? 10 : 16;
-const holderM = new THREE.MeshStandardMaterial({ color:0x3ddc84, emissive:0x3ddc84, emissiveIntensity:0.9, metalness:0.6, roughness:0.3 });
-const holderPos = [];
-for (let i=0;i<HOLDERS;i++){
-  const a = i/HOLDERS*Math.PI*2;
-  const m = new THREE.Mesh(new THREE.OctahedronGeometry(0.16, 0), holderM);
-  m.userData.a = a; m.userData.r = 5.2 + Math.sin(i*1.7)*0.5; m.userData.y = Math.sin(i*2.3)*1.1;
-  holders.add(m); holderPos.push(m);
-}
-scene.add(holders);
-const ring = new THREE.Mesh(new THREE.TorusGeometry(5.2, 0.012, 8, 160), new THREE.MeshBasicMaterial({ color:0x3ddc84, transparent:true, opacity:0.28 }));
-ring.rotation.x = Math.PI/2 + 0.35; scene.add(ring);
-
-// ---------- coins (fees from traders) & sparks (payouts to holders) ----------
-const COINS = isMobile ? 26 : 60;
-const coinG = new THREE.CylinderGeometry(0.17, 0.17, 0.05, 20);
-const coinM = new THREE.MeshStandardMaterial({ color:0xf5c542, metalness:1, roughness:0.28, emissive:0x6b4d00, emissiveIntensity:0.35 });
-const coins = new THREE.InstancedMesh(coinG, coinM, COINS); scene.add(coins);
-const sparkG = new THREE.SphereGeometry(0.07, 8, 8);
-const sparkM = new THREE.MeshBasicMaterial({ color:0x8dffc0 });
-const sparks = new THREE.InstancedMesh(sparkG, sparkM, COINS); scene.add(sparks);
-const dummy = new THREE.Object3D();
-const P = []; // particles
-const rnd = (a,b)=>a+Math.random()*(b-a);
-function spawnCoin(i, initial){
-  const a = rnd(0, Math.PI*2), r = rnd(9, 13);
-  P[i] = { phase:'coin', pos:new THREE.Vector3(Math.cos(a)*r, rnd(-3,4), Math.sin(a)*r*0.6 - 2), spin:rnd(2,5), t:initial?Math.random():0, speed:rnd(0.18,0.32), target:null };
-}
-for (let i=0;i<COINS;i++) spawnCoin(i, true);
-const headWorld = new THREE.Vector3();
-const tmp = new THREE.Vector3();
-const ONE = new THREE.Vector3(1,1,1);
-const to = new THREE.Vector3();
-
-// ---------- background stars ----------
-const starN = isMobile ? 500 : 1400;
-const sp = new Float32Array(starN*3);
-for (let i=0;i<starN;i++){ sp[i*3]=rnd(-40,40); sp[i*3+1]=rnd(-25,25); sp[i*3+2]=rnd(-40,-6); }
-const stars = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(sp,3)),
-  new THREE.PointsMaterial({ color:0x9fd9b8, size:0.06, transparent:true, opacity:0.7 }));
-scene.add(stars);
-// grid floor
-const grid = new THREE.GridHelper(80, 80, 0x1f8f52, 0x143a26); grid.position.y = -4.2; grid.material.transparent = true; grid.material.opacity = 0.35; scene.add(grid);
-
-// ---------- post ----------
-const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene, camera));
-const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), isMobile ? 0.45 : 0.6, 0.5, 0.85);
-composer.addPass(bloom);
-
-// ---------- interaction ----------
-const mouse = new THREE.Vector2(0,0), mouseT = new THREE.Vector2(0,0);
-addEventListener('pointermove', e => { mouseT.set((e.clientX/innerWidth)*2-1, -(e.clientY/innerHeight)*2+1); }, { passive:true });
-addEventListener('deviceorientation', e => { if (e.gamma!=null) mouseT.set(THREE.MathUtils.clamp(e.gamma/30,-1,1), THREE.MathUtils.clamp((e.beta-45)/30,-1,1)); }, { passive:true });
-let scrollY = 0; addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive:true });
-addEventListener('resize', () => { camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight); });
-let blink = 0, nextBlink = 2.5;
-const fade = document.getElementById('fade');
-
-// ---------- loop ----------
-const clock = new THREE.Clock();
-function frame(){
-  const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
-  const act = window.ROBO.activity;
-  // scroll: dolly back and dim
-  const s = Math.min(1, scrollY / (innerHeight*1.2));
-  camera.position.z = 11 + s*7; camera.position.y = 0.3 + s*1.5;
-  fade.style.opacity = (s*0.75).toFixed(2);
-  bloom.strength = (isMobile?0.45:0.6) + act*0.35;
-  // mouse look
-  mouse.lerp(mouseT, 0.06);
-  robot.rotation.y = mouse.x*0.55 + Math.sin(t*0.4)*0.05;
-  robot.rotation.x = -mouse.y*0.35 + Math.sin(t*0.7)*0.03;
-  robot.position.y = (isMobile ? 2.4 : 0.6) + Math.sin(t*1.1)*0.18 - s*0.8;
-  robot.position.x = (isMobile ? 0 : 3.1) * (1 - s); // hero: robot right of text; scrolled: centered
-  // blink
-  blink -= dt; if (blink < -nextBlink){ blink = 0.14; nextBlink = rnd(2,5); }
-  const open = blink > 0 ? 0.08 : 1; eyeL.scale.y = eyeR.scale.y = THREE.MathUtils.lerp(eyeL.scale.y, open, 0.5);
-  // grill pulses with activity
-  grill.forEach((g,i)=>{ g.material.emissiveIntensity = 1.2 + Math.sin(t*6 + i)*0.9*act; });
-  nub.material.emissiveIntensity = 1.5 + Math.sin(t*3)*0.8;
-  // holders orbit
-  holders.rotation.y = t*0.12;
-  holderPos.forEach(m => { m.position.set(Math.cos(m.userData.a)*m.userData.r, m.userData.y + Math.sin(t*1.3+m.userData.a)*0.25, Math.sin(m.userData.a)*m.userData.r); m.rotation.y = t; });
-  ring.rotation.z = t*0.05;
-  // particles
-  headG.getWorldPosition(headWorld);
-  for (let i=0;i<COINS;i++){
-    const p = P[i];
-    if (p.phase === 'coin'){
-      p.t += dt*p.speed*(0.6+act);
-      const k = p.t;
-      tmp.copy(headWorld).sub(p.pos);
-      const dist = tmp.length();
-      // ease-in pull toward the head
-      p.pos.addScaledVector(tmp.normalize(), dt*(1.2 + k*5)*(0.6+act));
-      p.pos.y += Math.sin(t*3+i)*0.004;
-      dummy.position.copy(p.pos); dummy.rotation.set(t*p.spin, t*p.spin*0.7, 0); dummy.scale.setScalar(1);
-      coins.setMatrixAt(i, dummy.matrix.identity()); dummy.updateMatrix(); coins.setMatrixAt(i, dummy.matrix);
-      dummy.scale.setScalar(0); dummy.updateMatrix(); sparks.setMatrixAt(i, dummy.matrix);
-      if (dist < 1.7){ // absorbed → becomes a spark to a random holder
-        const h = holderPos[Math.floor(Math.random()*HOLDERS)];
-        p.phase = 'spark'; p.t = 0; p.from = p.pos.clone(); p.target = h; p.mid = p.pos.clone().add(new THREE.Vector3(rnd(-2,2), rnd(1,3), rnd(-1,1)));
-      }
-    } else {
-      p.t += dt*(1.1+act*0.8);
-      const k = Math.min(1, p.t);
-      p.target.getWorldPosition(to);
-      // quadratic bezier from -> mid -> holder
-      tmp.set(0,0,0)
-        .addScaledVector(p.from, (1-k)*(1-k))
-        .addScaledVector(p.mid, 2*(1-k)*k)
-        .addScaledVector(to, k*k);
-      dummy.position.copy(tmp); dummy.rotation.set(0,0,0); dummy.scale.setScalar(1.4 - k*0.6); dummy.updateMatrix(); sparks.setMatrixAt(i, dummy.matrix);
-      dummy.scale.setScalar(0); dummy.updateMatrix(); coins.setMatrixAt(i, dummy.matrix);
-      if (k >= 1){ p.target.scale.setScalar(1.8); spawnCoin(i, false); }
-    }
+// ---- PFP generator (all client-side) ----
+(function(){
+  const cv = $("pfpCanvas"), ctx = cv.getContext("2d");
+  const hat = new Image(); hat.src = "hat.png";
+  let img = null, hx = 512, hy = 330, size = 92, rot = 0, flip = false, drag = null;
+  function placeholder(){
+    const g = ctx.createRadialGradient(512,420,50,512,512,700); g.addColorStop(0,"#1b2a1e"); g.addColorStop(1,"#070a08");
+    ctx.fillStyle = g; ctx.fillRect(0,0,1024,1024);
+    ctx.fillStyle = "#26312b"; ctx.beginPath(); ctx.arc(512,560,230,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(512,1150,420,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle = "#5f6d65"; ctx.font = "bold 44px Menlo, monospace"; ctx.textAlign = "center"; ctx.fillText("your face here", 512, 585);
   }
-  holderPos.forEach(m => m.scale.lerp(ONE, 0.08));
-  coins.instanceMatrix.needsUpdate = true; sparks.instanceMatrix.needsUpdate = true;
-  stars.rotation.y = t*0.01;
-  composer.render();
-  requestAnimationFrame(frame);
+  function draw(){
+    ctx.clearRect(0,0,1024,1024);
+    if (img && img.width){ const r = Math.max(1024/img.width, 1024/img.height), w = img.width*r, h = img.height*r; ctx.drawImage(img, (1024-w)/2, (1024-h)/2, w, h); } else placeholder();
+    if (!hat.complete || !hat.width) return;
+    const hw = 1024*size/100, hh = hw*(hat.height/hat.width);
+    ctx.save(); ctx.translate(hx, hy); ctx.rotate(rot*Math.PI/180); if (flip) ctx.scale(-1,1);
+    ctx.drawImage(hat, -hw/2, -hh/2, hw, hh); ctx.restore();
+  }
+  hat.onload = draw; draw();
+  $("pfpFile").onchange = e => { const f = e.target.files[0]; if (!f) return; const u = URL.createObjectURL(f); const i = new Image(); i.onload = () => { img = i; hx = 512; hy = 300; draw(); URL.revokeObjectURL(u); }; i.src = u; };
+  $("hatSize").oninput = e => { size = +e.target.value; draw(); };
+  $("hatRot").oninput = e => { rot = +e.target.value; draw(); };
+  $("hatFlip").onchange = e => { flip = e.target.checked; draw(); };
+  const pos = e => { const b = cv.getBoundingClientRect(); return [ (e.clientX-b.left)*1024/b.width, (e.clientY-b.top)*1024/b.height ]; };
+  cv.addEventListener("pointerdown", e => { const [x,y] = pos(e); drag = [x-hx, y-hy]; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener("pointermove", e => { if (!drag) return; const [x,y] = pos(e); hx = x-drag[0]; hy = y-drag[1]; draw(); });
+  cv.addEventListener("pointerup", () => drag = null);
+  $("pfpDl").onclick = () => { const a = document.createElement("a"); a.download = "robohood-pfp.png"; a.href = cv.toDataURL("image/png"); a.click(); };
+})();
+</script>
+
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }</script>
+<script type="module">
+// Desktop only. Phones get the PNG (DECISIONS.md §3: a WebGL scene on mobile is a bounce).
+if (matchMedia('(max-width:820px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) { document.getElementById('vignette').remove(); }
+else {
+import('three').then(async THREE => {
+  const { RoundedBoxGeometry } = await import('three/addons/geometries/RoundedBoxGeometry.js');
+  const { EffectComposer } = await import('three/addons/postprocessing/EffectComposer.js');
+  const { RenderPass } = await import('three/addons/postprocessing/RenderPass.js');
+  const { UnrealBloomPass } = await import('three/addons/postprocessing/UnrealBloomPass.js');
+  const canvas = document.getElementById('gl'); canvas.hidden = false;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, powerPreference:'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(innerWidth, innerHeight);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+  const scene = new THREE.Scene(); scene.background = new THREE.Color(0x05080a); scene.fog = new THREE.FogExp2(0x05080a, 0.05);
+  const camera = new THREE.PerspectiveCamera(38, innerWidth/innerHeight, 0.1, 100); camera.position.set(0, 0.3, 11);
+  scene.add(new THREE.AmbientLight(0x89a597, 0.35));
+  const key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(4, 6, 6); scene.add(key);
+  const rim = new THREE.PointLight(0x3ddc84, 40, 30); rim.position.set(-6, 3, -3); scene.add(rim);
+  const rim2 = new THREE.PointLight(0xff4d5a, 12, 20); rim2.position.set(6, -2, -4); scene.add(rim2);
+  const front = new THREE.PointLight(0x3ddc84, 6, 12); front.position.set(0, -1, 5); scene.add(front);
+  const metal = new THREE.MeshStandardMaterial({ color:0xc9d1d6, metalness:0.85, roughness:0.32 });
+  const dark = new THREE.MeshStandardMaterial({ color:0x2b3238, metalness:0.7, roughness:0.5 });
+  const visorM = new THREE.MeshPhysicalMaterial({ color:0x06110b, metalness:0.2, roughness:0.15, clearcoat:1, clearcoatRoughness:0.1 });
+  const eyeM = new THREE.MeshStandardMaterial({ color:0x3ddc84, emissive:0x3ddc84, emissiveIntensity:2.6 });
+  const hatM = new THREE.MeshStandardMaterial({ color:0x27b26a, roughness:0.75 });
+  const hatD = new THREE.MeshStandardMaterial({ color:0x1f8f52, roughness:0.8 });
+  const featherM = new THREE.MeshStandardMaterial({ color:0xff4d5a, emissive:0xff1f30, emissiveIntensity:0.55, roughness:0.6, side:THREE.DoubleSide });
+  const nubM = new THREE.MeshStandardMaterial({ color:0xff4d5a, emissive:0xff4d5a, emissiveIntensity:1.8 });
+  const robot = new THREE.Group(), headG = new THREE.Group();
+  headG.add(new THREE.Mesh(new RoundedBoxGeometry(3.2, 2.4, 2.4, 6, 0.45), metal));
+  for (const s of [-1,1]) { const ear = new THREE.Mesh(new RoundedBoxGeometry(0.4,0.8,0.7,4,0.12), dark); ear.position.set(s*1.8,0.1,0); headG.add(ear);
+    const bolt = new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.16,0.12,20), metal); bolt.rotation.z = Math.PI/2; bolt.position.set(s*2.05,0.1,0); headG.add(bolt); }
+  const visor = new THREE.Mesh(new RoundedBoxGeometry(2.5,0.9,0.5,4,0.22), visorM); visor.position.set(0,0.25,1.05); headG.add(visor);
+  const eyeL = new THREE.Mesh(new RoundedBoxGeometry(0.62,0.34,0.08,2,0.08), eyeM); eyeL.position.set(-0.6,0.25,1.32); const eyeR = eyeL.clone(); eyeR.position.x = 0.6; headG.add(eyeL, eyeR);
+  for (const s of [-1,1]) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.7,0.08,0.06), dark); b.position.set(s*0.6,0.5,1.33); b.rotation.z = s*-0.25; headG.add(b); }
+  const mouth = new THREE.Mesh(new RoundedBoxGeometry(1.6,0.42,0.2,3,0.08), dark); mouth.position.set(0,-0.65,1.15); headG.add(mouth);
+  const grill = []; for (let i=0;i<5;i++){ const g = new THREE.Mesh(new THREE.BoxGeometry(0.06,0.22,0.06), eyeM.clone()); g.position.set(-0.56+i*0.28,-0.65,1.28); headG.add(g); grill.push(g); }
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.6,0.6,24), dark); neck.position.set(0,-1.45,0); headG.add(neck);
+  const base = new THREE.Mesh(new RoundedBoxGeometry(1.8,0.5,1.4,4,0.18), dark); base.position.set(0,-1.9,0); headG.add(base);
+  const hat = new THREE.Group();
+  const brim = new THREE.Mesh(new THREE.CylinderGeometry(2.05,2.15,0.16,48), hatD); brim.position.y = 1.28; hat.add(brim);
+  const crown = new THREE.Mesh(new THREE.ConeGeometry(1.95,1.05,48), hatM); crown.position.y = 1.85; crown.scale.set(1,1,0.85); hat.add(crown);
+  const band = new THREE.Mesh(new THREE.TorusGeometry(1.9,0.09,12,64), hatD); band.rotation.x = Math.PI/2; band.position.y = 1.36; hat.add(band);
+  const fShape = new THREE.Shape(); fShape.moveTo(0,0); fShape.quadraticCurveTo(0.9,0.25,2.1,1.6); fShape.quadraticCurveTo(1.2,1.1,0,0.28); fShape.lineTo(0,0);
+  const feather = new THREE.Mesh(new THREE.ExtrudeGeometry(fShape,{depth:0.05,bevelEnabled:true,bevelThickness:0.02,bevelSize:0.02,bevelSegments:2}), featherM);
+  feather.position.set(0.9,1.45,0.35); feather.rotation.set(0.15,-0.35,0.25); hat.add(feather);
+  const nub = new THREE.Mesh(new THREE.SphereGeometry(0.14,24,24), nubM); nub.position.y = 2.42; hat.add(nub);
+  headG.add(hat); robot.add(headG); robot.scale.setScalar(0.82); scene.add(robot);
+  const COINS = 40, coinG = new THREE.CylinderGeometry(0.17,0.17,0.05,20);
+  const coinM = new THREE.MeshStandardMaterial({ color:0xf5c542, metalness:1, roughness:0.28, emissive:0x6b4d00, emissiveIntensity:0.35 });
+  const coins = new THREE.InstancedMesh(coinG, coinM, COINS); scene.add(coins);
+  const dummy = new THREE.Object3D(), P = [], rnd = (a,b)=>a+Math.random()*(b-a), headWorld = new THREE.Vector3(), tmp = new THREE.Vector3();
+  const spawn = (i) => { const a = rnd(0,Math.PI*2), r = rnd(9,13); P[i] = { pos:new THREE.Vector3(Math.cos(a)*r, rnd(-3,4), Math.sin(a)*r*0.6-2), spin:rnd(2,5), t:Math.random(), speed:rnd(0.18,0.32) }; };
+  for (let i=0;i<COINS;i++) spawn(i);
+  const sp = new Float32Array(1200*3); for (let i=0;i<1200;i++){ sp[i*3]=rnd(-40,40); sp[i*3+1]=rnd(-25,25); sp[i*3+2]=rnd(-40,-6); }
+  const stars = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(sp,3)), new THREE.PointsMaterial({ color:0x9fd9b8, size:0.06, transparent:true, opacity:0.7 })); scene.add(stars);
+  const grid = new THREE.GridHelper(80,80,0x1f8f52,0x143a26); grid.position.y = -4.2; grid.material.transparent = true; grid.material.opacity = 0.3; scene.add(grid);
+  const composer = new EffectComposer(renderer); composer.addPass(new RenderPass(scene, camera));
+  const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.6, 0.5, 0.85); composer.addPass(bloom);
+  const mouse = new THREE.Vector2(), mouseT = new THREE.Vector2();
+  addEventListener('pointermove', e => mouseT.set((e.clientX/innerWidth)*2-1, -(e.clientY/innerHeight)*2+1), { passive:true });
+  let scrollY = 0; addEventListener('scroll', () => scrollY = window.scrollY, { passive:true });
+  addEventListener('resize', () => { camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight); });
+  let blink = 0, nextBlink = 2.5; const fade = document.getElementById('fade'); const clock = new THREE.Clock();
+  (function frame(){
+    const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime, act = window.ROBO.activity;
+    const s = Math.min(1, scrollY/(innerHeight*1.1));
+    camera.position.z = 11 + s*7; camera.position.y = 0.3 + s*1.5; fade.style.opacity = (s*0.85).toFixed(2);
+    bloom.strength = 0.6 + act*0.35;
+    mouse.lerp(mouseT, 0.06);
+    robot.rotation.y = mouse.x*0.55 + Math.sin(t*0.4)*0.05; robot.rotation.x = -mouse.y*0.35 + Math.sin(t*0.7)*0.03;
+    robot.position.y = 0.6 + Math.sin(t*1.1)*0.18 - s*0.8; robot.position.x = 3.1*(1-s);
+    blink -= dt; if (blink < -nextBlink){ blink = 0.14; nextBlink = rnd(2,5); }
+    const open = blink > 0 ? 0.08 : 1; eyeL.scale.y = eyeR.scale.y = THREE.MathUtils.lerp(eyeL.scale.y, open, 0.5);
+    grill.forEach((g,i)=> g.material.emissiveIntensity = 1.2 + Math.sin(t*6+i)*0.9*act);
+    nub.material.emissiveIntensity = 1.5 + Math.sin(t*3)*0.8;
+    headG.getWorldPosition(headWorld);
+    for (let i=0;i<COINS;i++){ const p = P[i]; p.t += dt*p.speed*(0.6+act); tmp.copy(headWorld).sub(p.pos); const dist = tmp.length();
+      p.pos.addScaledVector(tmp.normalize(), dt*(1.2+p.t*5)*(0.6+act));
+      dummy.position.copy(p.pos); dummy.rotation.set(t*p.spin, t*p.spin*0.7, 0); dummy.scale.setScalar(dist<2.2 ? Math.max(0,(dist-1.4)/0.8) : 1); dummy.updateMatrix(); coins.setMatrixAt(i, dummy.matrix);
+      if (dist < 1.5) spawn(i); }
+    coins.instanceMatrix.needsUpdate = true; stars.rotation.y = t*0.01;
+    composer.render(); requestAnimationFrame(frame);
+  })();
+}).catch(e => { console.warn('3D off', e); document.getElementById('vignette').remove(); });
 }
-frame();
 </script>
 </body>
 </html>
