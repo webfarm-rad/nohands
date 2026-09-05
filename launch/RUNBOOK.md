@@ -135,6 +135,31 @@ Paid KOL posts: typical rate on this chain is $200-1,500 per post for 10k-100k a
 
 ---
 
+## Dev economics — how the human makes money
+
+"Holder fee sharing" does not mean the dev earns nothing. It means the dev earns as the biggest holder, under the same rule as everyone.
+
+Rough numbers (ETH $2,450, Pons v2 curve, 4.2 ETH graduation):
+
+| | |
+|---|---|
+| Dev buy at launch | 0.30 ETH (~$735) |
+| Share of supply that buys at the bottom of the curve | ~6-9% (first buyer, snipe-exempt) |
+| Value of that bag at $1M mcap | ~$60-90k |
+| Holder fee share at $1M/day volume | 0.7% × $1M = $7k/day to all holders → ~$450-600/day to an 8% holder |
+
+Three ways to set the form. Pick one, the site copy changes accordingly.
+
+| Option | Pons settings | Human earns | Story |
+|---|---|---|---|
+| **A. Pure Robin Hood** (site is written for this) | Holder sharing ON, creator tax 0 | Bag + pro-rata fee share as top holder | "0% dev tax" — strongest differentiator on a chain with 25k launches/day |
+| **B. Small declared cut** | Holder sharing ON, creator tax 10% (the max; = 0.1% of volume) | Bag + fee share + ~$1k/day at $1M volume | "0.6% to holders, 0.1% to the human, declared" — still honest, slightly weaker line |
+| **C. Standard Pons launch** | Holder sharing OFF, creator gets the 70% | 0.7% of volume (~$7k/day at $1M volume) | Same as every other launch. Loses the only mechanic that makes this coin different |
+
+Recommendation: A. The coin's only edge is the mechanic, and the mechanic is what a KOL or journalist can repeat in one sentence. The human's upside is the bag. If you want B, say so before launch and the AI rewrites the site and thread for "0.1% to the human".
+
+---
+
 ## What the AI cannot do (the honest list)
 
 1. Create the X account or any account with phone/captcha verification.
