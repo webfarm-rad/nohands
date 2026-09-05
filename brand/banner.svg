@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1a12"/>
+      <stop offset="1" stop-color="#050706"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#3ddc84" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1500" height="500" fill="url(#bg)"/>
+  <rect width="1500" height="500" fill="url(#grid)"/>
+  <g transform="translate(70,20) scale(0.575)">
+    <use href="#logo"/>
+  </g>
+  <text x="560" y="205" font-family="Helvetica Neue, Arial, sans-serif" font-size="128" font-weight="800" fill="#f2f5f3" letter-spacing="-4">ROBO HOOD</text>
+  <text x="565" y="270" font-family="Menlo, Courier New, monospace" font-size="38" fill="#3ddc84">$ROBOHOOD · Robinhood Chain</text>
+  <text x="565" y="340" font-family="Helvetica Neue, Arial, sans-serif" font-size="40" fill="#c8d0cb">The AI is the dev. The human only pressed Sign.</text>
+  <text x="565" y="400" font-family="Helvetica Neue, Arial, sans-serif" font-size="34" fill="#8d9a92">Fees from traders go to holders. Math, not promises.</text>
+</svg>
