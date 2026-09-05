@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#1b2a1e"/>
+      <stop offset="1" stop-color="#070a08"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8ecef"/>
+      <stop offset="1" stop-color="#9aa5ad"/>
+    </linearGradient>
+    <linearGradient id="hat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3ddc84"/>
+      <stop offset="1" stop-color="#1f8f52"/>
+    </linearGradient>
+  <radialGradient id="bg" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#1b2a1e"/><stop offset="1" stop-color="#070a08"/></radialGradient>
+<filter id="sh"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.9"/></filter></defs>
+<rect width="1200" height="1200" fill="url(#bg)"/>
+<g transform="translate(200,200) scale(1.0)">
+  <!-- neck -->
+  <rect x="340" y="560" width="120" height="70" rx="16" fill="#6b7680"/>
+  <rect x="300" y="610" width="200" height="60" rx="20" fill="#4d565e"/>
+
+  <!-- head -->
+  <rect x="200" y="290" width="400" height="300" rx="60" fill="url(#metal)" stroke="#3a434a" stroke-width="10"/>
+  <!-- ear bolts -->
+  <rect x="160" y="400" width="44" height="90" rx="14" fill="#7d8790" stroke="#3a434a" stroke-width="8"/>
+  <rect x="596" y="400" width="44" height="90" rx="14" fill="#7d8790" stroke="#3a434a" stroke-width="8"/>
+
+  <!-- visor -->
+  <rect x="245" y="360" width="310" height="110" rx="40" fill="#0b1210" stroke="#3a434a" stroke-width="8"/>
+  <!-- eyes -->
+  <rect x="285" y="392" width="80" height="46" rx="10" fill="#3ddc84"/>
+  <rect x="435" y="392" width="80" height="46" rx="10" fill="#3ddc84"/>
+  <rect x="285" y="392" width="80" height="46" rx="10" fill="#3ddc84" opacity="0.5" filter="blur(6px)"/>
+  <!-- eyebrows: confident squint -->
+  <path d="M290 372 L365 388" stroke="#0b1210" stroke-width="12" stroke-linecap="round"/>
+  <path d="M510 372 L435 388" stroke="#0b1210" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- mouth grill -->
+  <rect x="300" y="500" width="200" height="50" rx="14" fill="#2b3238"/>
+  <g stroke="#3ddc84" stroke-width="8" stroke-linecap="round">
+    <line x1="330" y1="512" x2="330" y2="538"/>
+    <line x1="365" y1="512" x2="365" y2="538"/>
+    <line x1="400" y1="512" x2="400" y2="538"/>
+    <line x1="435" y1="512" x2="435" y2="538"/>
+    <line x1="470" y1="512" x2="470" y2="538"/>
+  </g>
+
+  <!-- hat: Robin Hood bycocket -->
+  <path d="M150 320 Q400 120 660 300 L560 300 Q400 200 235 320 Z" fill="url(#hat)" stroke="#155f37" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M215 320 Q400 220 590 320 L590 330 Q400 260 215 340 Z" fill="#1f8f52"/>
+  <rect x="215" y="300" width="380" height="40" rx="14" fill="url(#hat)" stroke="#155f37" stroke-width="10"/>
+  <!-- feather -->
+  <path d="M520 270 C600 180 700 160 720 120 C700 220 640 260 560 290 Z" fill="#ff4d5a" stroke="#a5202d" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M540 280 C610 220 660 180 705 140" stroke="#ffd1d5" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- antenna nub -->
+  <circle cx="400" cy="205" r="14" fill="#ff4d5a" stroke="#a5202d" stroke-width="6"/>
+</g>
+<text x="600" y="150" text-anchor="middle" font-family="Impact, 'Arial Black', Helvetica, sans-serif" font-size="92" font-weight="900" fill="#fff" stroke="#000" stroke-width="8" paint-order="stroke" filter="url(#sh)" style="text-transform:uppercase">YOU TRADE</text>
+<text x="600" y="1110" text-anchor="middle" font-family="Impact, 'Arial Black', Helvetica, sans-serif" font-size="92" font-weight="900" fill="#fff" stroke="#000" stroke-width="8" paint-order="stroke" filter="url(#sh)" style="text-transform:uppercase">HOLDERS GET PAID</text>
+<text x="1170" y="1185" text-anchor="end" font-family="Menlo, monospace" font-size="28" fill="#3ddc84">$ROBOHOOD</text>
+</svg>

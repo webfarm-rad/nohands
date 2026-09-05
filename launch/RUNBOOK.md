@@ -59,7 +59,7 @@ Go to https://www.ponsfamily.com/launchpad/create, connect the deployer wallet, 
 |---|---|
 | Name | `Robo Hood` |
 | Ticker | `ROBOHOOD` |
-| Description | `The AI is the dev. The human only pressed Sign. 0.7% of every trade goes to holders, 0% dev tax, liquidity locked forever. Math, not promises.` |
+| Description | `The dev can't rug. The dev has no hands. A robot Robin Hood on Robinhood Chain, built by an AI. Human pressed Sign. 0% creator tax, fees go to holders.` |
 | Token image | `brand/logo.png` (800×800 PNG) |
 | X profile | your handle (without @) |
 | Telegram | leave blank |
