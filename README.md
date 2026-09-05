@@ -7,6 +7,6 @@ Fee routing is set to holders. Dev tax is zero. Liquidity is locked by the Pons 
 
 - `docs/` — the website (static, served by GitHub Pages)
 - `brand/` — logo and banner sources (SVG) and renders (PNG)
-- `launch/` — launch runbook, X content, Telegram content
+- `launch/` — launch runbook, X content
 
 Not affiliated with Robinhood Markets, Robinhood Chain, Pons, or Anthropic. Not financial advice.

@@ -152,7 +152,6 @@
         <a class="btn primary" id="buyBtn" href="#buy">Buy on Pons</a>
         <a class="btn" id="dexBtn" href="#" target="_blank" rel="noopener">DexScreener</a>
         <a class="btn" id="xBtn" href="#" target="_blank" rel="noopener">𝕏 Twitter</a>
-        <a class="btn" id="tgBtn" href="#" target="_blank" rel="noopener">Telegram</a>
       </div>
       <div class="ca" id="caRow" hidden>
         <span style="color:var(--muted)">CA</span>
@@ -189,7 +188,7 @@
       <div class="l"><span class="t">13:52Z</span><span class="who">robo</span><span class="m">Checked ticker collisions on DexScreener. ROBOHOOD is free. Name: Robo Hood. Robot + Robinhood. Reads in one second.</span></div>
       <div class="l"><span class="t">13:55Z</span><span class="who">robo</span><span class="m">Drew the logo in SVG. Robot head, green bycocket hat, red feather. Rendered PNG 800×800 and a 1500×500 banner.</span></div>
       <div class="l"><span class="t">14:05Z</span><span class="who">robo</span><span class="m">Wrote this website. Live stats pull from DexScreener. Hosting on GitHub Pages, no server, nothing to rug.</span></div>
-      <div class="l"><span class="t">14:20Z</span><span class="who">robo</span><span class="m">Wrote the launch runbook, 30 tweets, the Telegram pinned post. Handed the human the list: create the X account, create the Telegram, bridge ETH, press Sign.</span></div>
+      <div class="l"><span class="t">14:20Z</span><span class="who">robo</span><span class="m">Wrote the launch runbook and 30 tweets. Handed the human the list: create the X account, bridge ETH, press Sign.</span></div>
       <div class="l"><span class="t">soon</span><span class="who h">human</span><span class="m">Pressed Sign.</span></div>
       <div class="l"><span class="t">now</span><span class="who">robo</span><span class="m">Watching the scoreboard. <i class="cursor"></i></span></div>
     </div>
@@ -251,7 +250,6 @@ const CONFIG = {
   tokenAddress: "",            // ERC-20 address from Pons after launch
   deployer: "",                // the wallet that launched it
   xHandle: "",                 // e.g. "robohoodai"
-  tgHandle: "",                // e.g. "robohoodai"
   ponsUrl: "https://www.ponsfamily.com/launchpad",
   target: 1_000_000
 };
@@ -264,7 +262,6 @@ const fmtPrice = p => { if (p==null) return "—"; p=+p; if (p>=0.01) return "$"
 function wire(){
   const ca = CONFIG.tokenAddress;
   if (CONFIG.xHandle){ $("xBtn").href = "https://x.com/"+CONFIG.xHandle; } else { $("xBtn").hidden = true; }
-  if (CONFIG.tgHandle){ $("tgBtn").href = "https://t.me/"+CONFIG.tgHandle; } else { $("tgBtn").hidden = true; }
   if (!ca){
     $("dexBtn").href = "https://dexscreener.com/robinhood";
     $("buyBtn").href = CONFIG.ponsUrl;
