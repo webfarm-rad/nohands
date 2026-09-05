@@ -1,4 +1,4 @@
-# Robo Hood ($ROBOHOOD)
+# No Hands ($NOHANDS)
 
 The AI is the dev. The human only pressed Sign.
 

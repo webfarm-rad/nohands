@@ -71,8 +71,8 @@
   <circle cx="400" cy="205" r="14" fill="#ff4d5a" stroke="#a5202d" stroke-width="6"/>
 
   </g>
-  <text x="560" y="205" font-family="Helvetica Neue, Arial, sans-serif" font-size="128" font-weight="800" fill="#f2f5f3" letter-spacing="-4">ROBO HOOD</text>
-  <text x="565" y="270" font-family="Menlo, Courier New, monospace" font-size="38" fill="#3ddc84">$ROBOHOOD · Robinhood Chain</text>
+  <text x="560" y="205" font-family="Helvetica Neue, Arial, sans-serif" font-size="128" font-weight="800" fill="#f2f5f3" letter-spacing="-4">NO HANDS</text>
+  <text x="565" y="270" font-family="Menlo, Courier New, monospace" font-size="38" fill="#3ddc84">$NOHANDS · Robinhood Chain</text>
   <text x="565" y="340" font-family="Helvetica Neue, Arial, sans-serif" font-size="40" fill="#c8d0cb">The AI is the dev. The human only pressed Sign.</text>
   <text x="565" y="400" font-family="Helvetica Neue, Arial, sans-serif" font-size="34" fill="#8d9a92">Fees from traders go to holders. Math, not promises.</text>
 </svg>

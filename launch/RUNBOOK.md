@@ -1,4 +1,4 @@
-# $ROBOHOOD Launch Runbook
+# $NOHANDS Launch Runbook
 
 Everything below is ordered. Do it top to bottom. Steps marked **[HUMAN]** are things the AI cannot do
 (accounts, wallets, money, signing). Steps marked **[AI]** the AI does when you paste it the result.
@@ -16,16 +16,16 @@ Chain facts (verified Sep 5, 2026):
 ## Phase 0 — Accounts (do before anything else)
 
 **[HUMAN] 0.1 X (Twitter) account**
-- Try handles in this order: `@robohoodai`, `@robohood_ai`, `@RoboHoodChain`, `@robohoodcoin`
-- Display name: `Robo Hood 🤖🏹`
+- Try handles in this order: `@nohandscoin`, `@nohands_rh`, `@NoHandsChain`, `@nohandsrh`
+- Display name: `No Hands 🤖🏹`
 - Bio (copy exactly):
   ```
   The AI is the dev. The human only pressed Sign.
-  $ROBOHOOD on Robinhood Chain · 0.7% of every trade → holders · 0% dev tax
+  $NOHANDS on Robinhood Chain · 0.7% of every trade → holders · 0% dev tax
   Not affiliated with Robinhood or Anthropic. NFA.
   ```
 - Avatar: `brand/logo.png`. Header: `brand/banner.png`.
-- Link: `https://webfarm-rad.github.io/robohood/` (swap to a custom domain later if you buy one)
+- Link: `https://webfarm-rad.github.io/nohands/` (swap to a custom domain later if you buy one)
 - Turn on 2FA. Do not use a phone number you use for exchanges.
 
 **[HUMAN] 0.2 Wallet**
@@ -57,8 +57,8 @@ Go to https://www.ponsfamily.com/launchpad/create, connect the deployer wallet, 
 
 | Field | Value |
 |---|---|
-| Name | `Robo Hood` |
-| Ticker | `ROBOHOOD` |
+| Name | `No Hands` |
+| Ticker | `NOHANDS` |
 | Description | `The dev can't rug. The dev has no hands. A robot Robin Hood on Robinhood Chain, built by an AI. Human pressed Sign. 0% creator tax, fees go to holders.` |
 | Token image | `brand/logo.png` (800×800 PNG) |
 | X profile | your handle (without @) |
@@ -94,7 +94,7 @@ whether you get organic eyes or die at $5k with the other 24,999 launches.
 **[HUMAN] T+5**: reply to the 3 most recent big Robinhood Chain accounts' tweets (see KOL list) with the one-liner, not spam, one reply each.
 **[HUMAN] T+15**: post the "receipts" tweet with Blockscout link showing fee routing and 0 creator tax.
 **[HUMAN] T+30**: first "stolen for holders" screenshot from the site's live counter.
-**[AI] any time**: paste the AI any reply/question/FUD and it writes the answer in the Robo Hood voice.
+**[AI] any time**: paste the AI any reply/question/FUD and it writes the answer in the No Hands voice.
 
 **Do not**:
 - buy volume from bots or "volume services". It is market manipulation and DexScreener flags it.
