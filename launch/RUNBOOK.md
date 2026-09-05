@@ -44,7 +44,7 @@ Chain facts (verified Sep 5, 2026):
   small enough that nobody reads it as a rug setup. Anything above 0.5 ETH (12% of curve) gets called out.
 
 **[HUMAN] 0.3 Optional: domain**
-- `robohood.xyz` / `robohood.fun` / `robohoodai.com` on Namecheap or Porkbun (~$2-12).
+- `nohands.xyz` / `nohands.fun` / `nohandscoin.com` on Namecheap or Porkbun (~$2-12).
 - Tell the AI the domain. The AI will add the CNAME file and you flip DNS: `CNAME www → webfarm-rad.github.io`, plus A records `185.199.108.153 … 111.153` for the apex.
 
 **[HUMAN] 0.4 Send the AI**: X handle and deployer address. The AI updates the site and content with them.
